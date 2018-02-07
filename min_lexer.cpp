@@ -19,3 +19,11 @@ token lexer::next_token()
 	return token(1, "<EOF>");
 }
 
+void lexer::consume()
+{
+}
+
+token lexer::name()
+{
+}
+
