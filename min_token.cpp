@@ -3,6 +3,6 @@
 
 std::ostream& operator<<(std::ostream &os, token & t)
 {
-	os << "<" << t.text << "," << t.type << std::endl;
+	os << "<" << t.text << "," << t.type << ">" << std::endl;
 	return os;
 }

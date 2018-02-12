@@ -1,11 +1,8 @@
 #ifndef MIN_LEXER_H
 #define MIN_LEXER_H
 
-#include <fstream>
+#include <string>
 #include "min_token.h"
-
-int LP = 2; // left parenthesis
-int RP = 3; // right parenthesis
 
 class lexer {
 public:
@@ -13,10 +10,14 @@ public:
 	token name();
 	void consume();
 
-	lexer(std::string file_name): f(file_name) {}
-	~lexer() { f.close(); }
+	lexer(std::string input_str): input(input_str), pos(0) {
+		c = input[pos];
+	}
+
 private:
-	std::ifstream f;
+	std::string input;
+	int pos;
+	char c;
 };
 
 #endif
