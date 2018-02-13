@@ -4,11 +4,13 @@
 #include <string>
 #include "min_token.h"
 
+namespace min {
+
 class lexer {
 public:
-	token next_token();
-	token name();
-	token number();
+	min::token next_token();
+	min::token name();
+	min::token number();
 	void consume();
 
 	lexer(std::string input_str): input(input_str), pos(0) {
@@ -21,4 +23,5 @@ private:
 	char c;
 };
 
+}// namespace min
 #endif

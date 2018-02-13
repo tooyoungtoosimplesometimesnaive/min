@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 
+namespace min {
+
 struct token{
 	friend std::ostream& operator<<(std::ostream &os, token & t);
 	int type;
@@ -12,5 +14,6 @@ struct token{
 	token(int t, std::string txt):type(t), text(txt) {}
 };
 
+} // namespace min
 #endif
 

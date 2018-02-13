@@ -2,7 +2,7 @@
 #include "min_token.h"
 #include "min.h"
 
-token lexer::next_token()
+min::token min::lexer::next_token()
 {
 	while (c != '\0') {
 		if (isspace(c)) {
@@ -29,7 +29,7 @@ token lexer::next_token()
 	return token(END, "EOF");
 }
 
-void lexer::consume()
+void min::lexer::consume()
 {
 	pos++;
 	if (pos > input.size())
@@ -38,7 +38,7 @@ void lexer::consume()
 		c = input[pos];
 }
 
-token lexer::name()
+min::token min::lexer::name()
 {
 	std::string name = "";
 	do {
@@ -48,7 +48,7 @@ token lexer::name()
 	return token(NAME, name);
 }
 
-token lexer::number()
+min::token min::lexer::number()
 {
 	std::string number = "";
 	do {
