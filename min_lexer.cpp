@@ -21,6 +21,8 @@ token lexer::next_token()
 		}
 		else if (isalpha(c))
 			return name();
+		else if (c >= '0' && c <= '9')
+			return number();
 		else
 			throw "Invalid";
 	}
@@ -44,5 +46,15 @@ token lexer::name()
 		consume();
 	} while (isalpha(c));
 	return token(NAME, name);
+}
+
+token lexer::number()
+{
+	std::string number = "";
+	do {
+		number.append(1, c);
+		consume();
+	} while (c >= '0' && c <= '9');
+	return token(NUMBER, number);
 }
 

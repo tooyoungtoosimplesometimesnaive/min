@@ -19,6 +19,7 @@ int main() {
 
 	run_test("(list a b c d)");
 	run_test("(list (list a b) (list c d))");
+	run_test("(add (add 1 2) (add 4 100))");
 	return 0;
 }
 

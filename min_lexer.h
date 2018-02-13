@@ -8,6 +8,7 @@ class lexer {
 public:
 	token next_token();
 	token name();
+	token number();
 	void consume();
 
 	lexer(std::string input_str): input(input_str), pos(0) {
