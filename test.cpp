@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
 #include "min_lexer.h"
+#include "min_parser.h"
 #include "min.h"
 
-void run_test(std::string input)
+void run_lexer_test(std::string input)
 {
 	std::cout << "Test begin for :'" << input << "'" << std::endl;
 	min::lexer l(input);
@@ -15,11 +16,22 @@ void run_test(std::string input)
 	} while (t.type != min::END);
 	std::cout << "Test ends" << std::endl;
 }
+
+void run_parser_test(std::string input)
+{
+	std::cout << "Test parser begin for :'" << input << "'" << std::endl;
+	min::lexer l(input);
+	min::parser p(l);
+	p.func();
+	std::cout << "Test parser ends" << std::endl;
+}
+
 int main() {
 
-	run_test("(list a b c d)");
-	run_test("(list (list a b) (list c d))");
-	run_test("(add (add 1 2) (add 4 100))");
+	run_lexer_test("(list a b c d)");
+	run_lexer_test("(list (list a b) (list c d))");
+	run_lexer_test("(add (add 1 2) (add 4 100))");
+	run_parser_test("(add 1 2)");
 	return 0;
 }
 
