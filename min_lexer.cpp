@@ -45,6 +45,7 @@ min::token min::lexer::name()
 		name.append(1, c);
 		consume();
 	} while (isalpha(c));
+
 	if (name == min::_ADD)
 		return token(min::FUNC_NAME, name);
 	else if (name == min::_MUL)

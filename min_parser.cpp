@@ -3,7 +3,8 @@
 
 void min::parser::match(int t)
 {
-	std::cout << "In match - " << t << " - " << lookahead.type << std::endl;
+	std::cout << "In match - " << t << " - " << lookahead.type
+		<< " - " << lookahead.text << std::endl;
 	if (lookahead.type == t)
 		consume();
 	else throw "Error, type does not match";

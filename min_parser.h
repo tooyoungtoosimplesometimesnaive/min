@@ -1,6 +1,7 @@
 #ifndef MIN_PARSER_H
 #define MIN_PARSER_H
 
+#include <string>
 #include "min.h"
 #include "min_lexer.h"
 
@@ -8,7 +9,7 @@ namespace min {
 
 class parser {
 public:
-	parser(min::lexer l) : lex(l), lookahead(l.next_token()) {}
+	parser(std::string input) : lex(input), lookahead(lex.next_token()){}
 	void consume();
 	void match(int t);
 	void func();
