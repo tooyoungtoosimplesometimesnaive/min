@@ -4,6 +4,7 @@
 #include <string>
 #include "min.h"
 #include "min_lexer.h"
+#include "min_execution_context.h"
 
 namespace min {
 
@@ -11,11 +12,13 @@ class parser {
 public:
 	parser(std::string input) : lex(input), lookahead(lex.next_token()){}
 	void consume();
-	void match(int t);
-	void func();
-	void func_expr();
-	void expr();
-	void exprs();
+	std::string match(int t);
+
+	std::string func();
+
+
+	std::string func_expr();
+	void exprs(min::execution_context<std::string> & ec);
 
 private:
 	min::lexer lex;

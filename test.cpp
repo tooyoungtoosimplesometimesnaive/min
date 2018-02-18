@@ -2,6 +2,7 @@
 #include <string>
 #include "min_lexer.h"
 #include "min_parser.h"
+#include "min_execution_context.h"
 #include "min.h"
 
 void run_lexer_test(std::string input)
@@ -21,7 +22,8 @@ void run_parser_test(std::string input)
 {
 	std::cout << "Test parser begin for :'" << input << "'" << std::endl;
 	min::parser p(input);
-	p.func();
+	auto r = p.func();
+	std::cout << "Test result: " << r << std::endl;
 	std::cout << "Test parser ends" << std::endl;
 }
 
@@ -34,6 +36,11 @@ int main() {
 	// test parser:
 	run_parser_test("(add 1 2)");
 	run_parser_test("(add (add 1 2) 1 2)");
+	run_parser_test("(mul (add 1 (add 2 7 8)) 1 2)");
+	run_parser_test("(mul (add 1 2) 1 2)");
+	run_parser_test("(sub (add 1 2) 1 2)");
+	run_parser_test("(con abcd (add 100))");
+	run_parser_test("(list (add 1 2) 1 2)");
 	return 0;
 }
 
