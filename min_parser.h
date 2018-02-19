@@ -20,6 +20,10 @@ public:
 	std::string func_expr();
 	void exprs(min::execution_context<std::string> & ec);
 
+	void lambda_expr(execution_context<std::string> & ec);
+	void lambda_args(execution_context<std::string> & ec);
+	std::string lambda_func_expr(execution_context<std::string> & ec);
+
 private:
 	min::lexer lex;
 	min::token lookahead;

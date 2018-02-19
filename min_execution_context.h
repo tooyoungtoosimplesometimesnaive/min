@@ -8,6 +8,7 @@ namespace min
 template<typename T>
 struct execution_context
 {
+	std::vector<T> lambda_args;
 	std::vector<T> args;
 	T result;
 

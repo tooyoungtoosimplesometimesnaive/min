@@ -27,6 +27,13 @@ void run_parser_test(std::string input)
 	std::cout << "Test parser ends" << std::endl;
 }
 
+void run_lambda_test(std::string input)
+{
+	min::execution_context<std::string> ec;
+	min::parser p(input);
+	p.lambda_expr(ec);
+}
+
 int main() {
 
 	run_lexer_test("(list a b c d)");
@@ -41,6 +48,10 @@ int main() {
 	run_parser_test("(sub (add 1 2) 1 2)");
 	run_parser_test("(con abcd (add 100))");
 	run_parser_test("(list (add 1 2) 1 2)");
+
+	// simple test for lambda expression:
+	run_lambda_test("(lambda (x y) (add x y))");
+	run_lambda_test("(lambda (x y) (add x (mul x y)))");
 	return 0;
 }
 

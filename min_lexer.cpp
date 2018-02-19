@@ -19,6 +19,21 @@ min::token min::lexer::next_token()
 			consume();
 			return token(RP, ")");
 		}
+		else if (c == '[')
+		{
+			consume();
+			return token(LB, "[");
+		}
+		else if (c == ']')
+		{
+			consume();
+			return token(RB, "]");
+		}
+		else if (c == ',')
+		{
+			consume();
+			return token(COMMA, ",");
+		}
 		else if (isalpha(c))
 			return name();
 		else if (c >= '0' && c <= '9')
@@ -49,6 +64,8 @@ min::token min::lexer::name()
 	if (name == min::_ADD || name == min::_MUL || name == min::_SUB
 		|| name == min::_LIST || name == min::_CON)
 		return token(min::FUNC_NAME, name);
+	else if (name == min::_LAMBDA)
+		return token(min::LAMBDA, name);
 	else
 		return token(NAME, name);
 }
