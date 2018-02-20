@@ -66,6 +66,8 @@ min::token min::lexer::name()
 		return token(min::FUNC_NAME, name);
 	else if (name == min::_LAMBDA)
 		return token(min::LAMBDA, name);
+	else if (name == min::_MAP)
+		return token(min::MAP, name);
 	else
 		return token(NAME, name);
 }

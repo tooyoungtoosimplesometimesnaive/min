@@ -22,7 +22,7 @@ void run_parser_test(std::string input)
 {
 	std::cout << "Test parser begin for :'" << input << "'" << std::endl;
 	min::parser p(input);
-	auto r = p.func();
+	auto r = p.func().result;
 	std::cout << "Test result: " << r << std::endl;
 	std::cout << "Test parser ends" << std::endl;
 }
@@ -33,6 +33,23 @@ void run_lambda_test(std::string input)
 	min::parser p(input);
 	p.lambda_expr(ec);
 }
+
+void run_immediately_invoke_lambda_test(std::string input)
+{
+	std::cout << "immediately_invoke_lambda_expr test starts..." << std::endl;
+	min::parser p(input);
+	std::cout << p.immediately_invoke_lambda_expr() << std::endl;
+	std::cout << "immediately_invoke_lambda_expr test ends." << std::endl;
+}
+
+void run_map_test(std::string input)
+{
+	std::cout << "map test starts..." << std::endl;
+	min::parser p(input);
+	p.map();
+	std::cout << "map test ends." << std::endl;
+}
+
 
 int main() {
 
@@ -52,6 +69,12 @@ int main() {
 	// simple test for lambda expression:
 	run_lambda_test("(lambda (x y) (add x y))");
 	run_lambda_test("(lambda (x y) (add x (mul x y)))");
+
+	// run iilambda test:
+	run_immediately_invoke_lambda_test("((lambda (x y) (add x y)) 1 2)");
+
+	// run map test:
+	run_map_test("(map (lambda (x) (add x 1)) (list 1 2 3))");
 	return 0;
 }
 

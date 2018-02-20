@@ -11,15 +11,21 @@ namespace min {
 class parser {
 public:
 	parser(std::string input) : lex(input), lookahead(lex.next_token()){}
+	// basic token iteration:
 	void consume();
 	std::string match(int t);
 
-	std::string func();
-
-
+	// handling funcs:
+	min::execution_context<std::string> func();
 	std::string func_expr();
 	void exprs(min::execution_context<std::string> & ec);
 
+	// handling map:
+	void map();
+
+
+	// handling lambda exprs:
+	std::string immediately_invoke_lambda_expr();
 	void lambda_expr(execution_context<std::string> & ec);
 	void lambda_args(execution_context<std::string> & ec);
 	std::string lambda_func_expr(execution_context<std::string> & ec);
