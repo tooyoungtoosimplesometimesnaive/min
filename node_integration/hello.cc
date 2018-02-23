@@ -1,6 +1,7 @@
 // hello.cc using N-API
 #include <node_api.h>
 #include <string>
+// #include <iostream>
 
 // #include "../min_lexer.h"
 // #include "../min_parser.h"
@@ -62,8 +63,9 @@ napi_value Execute(napi_env env, napi_callback_info info)
 	// status = napi_create_string_utf8(env, p.func().result.c_str(), p.func().result.size(), &result);
 	test t;
 	std::string hw = t.hw();
+
 	status = napi_create_string_utf8(env, hw.c_str(), 12, &result);
-	return status != napi_ok ? result : nullptr;
+	return status != napi_ok ? nullptr : result;
 }
 
 napi_value init(napi_env env, napi_value exports) {
